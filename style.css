@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+} 
+
+body {
+     background-image: url("./img/fondo1.png");
+}
+
+.startGame {
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnStart {
+    width: 25%;
+    height: 20%;
+    border-radius: 30px;
+    background-color: palevioletred;
+    color: snow;
+    font-size: 30px;
+}
