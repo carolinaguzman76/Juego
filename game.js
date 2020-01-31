@@ -34,6 +34,7 @@ let game = {
         this.reset();
         this.interval = setInterval(() => {
             this.clear()
+            // this.audio.play()
             this.framesCounter++
             if (this.framesCounter > 5000) this.framesCounter = 0
             
@@ -53,11 +54,13 @@ let game = {
             if (this.time >= this.timeOut) {
                 this.endGame("Fin del juego")
 
+                this.audio.pause()
+
                 if (this.player1.score > this.player2.score) {
-                    this.winPlayer(`Ganador player 1, con ${this.player1.score} puntos`)
+                    this.winPlayer(`Bien por Manolito, ${this.player1.score} puntos`)
                   
                 } else if (this.player1.score < this.player2.score) {
-                    this.winPlayer(`Ganador player 2, con ${this.player2.score} puntos`)
+                    this.winPlayer(`Bravo por Carmencita, ${this.player2.score} puntos`)
 
                 } else {
                     this.winPlayer(`Empate con ${this.player1.score} puntos`)
@@ -69,9 +72,18 @@ let game = {
     drawAll() {
         this.background.drawBg()
         this.background.drawCat()
+        this.background.drawDogWindow()
+        this.background.drawPicture()
+        this.background.drawTextTime("Tiempo")
+        this.background.drawTextPlayer1("Manolito")
+        this.background.drawTextPlayer2("Carmencita")
+        this.background.drawDogFloor()
+
         this.box.drawBox()
-        this.player1.draw(this.framesCounter, 200, 100)
-        this.player2.draw(this.framesCounter, 90, 100)
+
+        this.player1.draw(this.framesCounter, 90, 100)
+        this.player2.draw(this.framesCounter, 250, 100)
+
         this.drawTime()
     },
 
@@ -83,13 +95,15 @@ let game = {
     reset() {
         this.background = new Background(this.ctx, this.width, this.height);
 
-        this.player1 = new Player(this.ctx, this.width, this.height, { SHOOT: { code: 32, down: false } }, "img/players/boyWalk.png", 300, 240, this.width / 2 - 600, this.height * 0.94 - 340);
-        this.player2 = new Player(this.ctx, this.width, this.height, { SHOOT: { code: 13, down: false } }, "img/players/girlWalk.png", 200, 240, this.width / 2 - 720, this.height * 0.99 - 240);
+        this.player1 = new Player(this.ctx, this.width, this.height, { SHOOT: { code: 32, down: false } }, "img/players/boyWalk.png", 300, 240, this.width / 2 - 600, this.height * 0.94 - 340, "./img/donuts1.png");
+        this.player2 = new Player(this.ctx, this.width, this.height, { SHOOT: { code: 13, down: false } }, "img/players/girlWalk.png", 200, 240, this.width / 2 - 720, this.height * 0.99 - 240, "./img/donuts2.png");
 
         this.box = new Box(this.ctx, 180, 130, this.width - 220, this.height - 230)
 
         this.timeBoard = ScoreBoard;
         this.timeBoard.init(this.ctx);
+
+        this.audio = new Audio("./musica/musicaFondo.wav")
     },
 
     clear() {
@@ -114,19 +128,19 @@ let game = {
     },
 
     drawTime() {
-        this.timeBoard.update(this.time, this.width / 2 + 200, this.height / 6, "green")
+        this.timeBoard.update(this.time, this.width / 2 + 190, this.height / 6, "green")
     },
 
     endGame(text) {
         this.ctx.font = '80px sans-serif'
-        this.ctx.fillStyle = 'black'
+        this.ctx.fillStyle = 'palevioletred'
         this.ctx.fillText(text, 500, 400)
     },
 
     winPlayer(text) {
         this.ctx.font = '60px sans-serif'
-        this.ctx.fillStyle = 'red'
-        this.ctx.fillText(text, this.width / 5, 600)
+        this.ctx.fillStyle = 'white'
+        this.ctx.fillText(text, this.width / 5, 650)
     }
 }
 
@@ -137,11 +151,12 @@ let game = {
 // Pintar Marcador - HECHO
 // Que los players se muevan (tener en cuenta que el donuts tiene que empezar donde este el player) - HECHO
 // Final de juego - HECHO
-// Musica
-// Pantalla de inicio
+// Musica - HECHO
+// Pantalla de inicio - HECHO
 
 // Posibles mejoras:
 // A partir de una puntuacion aumentar la velocidad - HECHO
 // Limitar el nunero de disparos/donuts - HECHO
+// Diferentes donuts para cada jugador - HECHO
 // Angulo de tiro variable
 // Segun el tipo de donuts la puntuacion es diferente

@@ -7,14 +7,14 @@ body {
      background-image: url("./img/fondo1.png");
 }
 
-.startGame {
+#startGame {
     height: 350px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.btnStart {
+#btnStart {
     width: 25%;
     height: 20%;
     border-radius: 30px;

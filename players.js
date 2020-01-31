@@ -1,5 +1,5 @@
 class Player {
-    constructor(ctx, w, h, keys, src, widthp, heightp, posX, posY) {
+    constructor(ctx, w, h, keys, src, widthp, heightp, posX, posY, donutSrc) {
         this.ctx = ctx
 
         this.gameWidth = w
@@ -26,6 +26,8 @@ class Player {
 
         this.velX = 2
         this.velY = 0
+
+        this.donutType = donutSrc
 
         this.counterShoot = 0
 
@@ -99,7 +101,7 @@ class Player {
     }
 
     shootDonuts() {
-        this.donutsArray.push(new Donuts(this.ctx, "./img/donuts1_2.png", 60, 60, this.posX + this.width / 2, this.posY + this.height / 2))
+        this.donutsArray.push(new Donuts(this.ctx, this.donutType, 60, 60, this.posX + this.width / 2, this.posY + this.height / 2))
     }
 
     movePlayer() {
