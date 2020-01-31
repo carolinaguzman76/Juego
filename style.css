@@ -21,4 +21,21 @@ body {
     background-color: palevioletred;
     color: snow;
     font-size: 30px;
+} 
+
+#space {
+    padding: 0 200px 10px 200px;
+}
+
+.instructions {
+    background-color: palevioletred;
+    font-size: 22px;
+    text-align: center;
+    padding: 15px;
+    color: snow;
+    margin-top: 300px;
+}
+
+.bold {
+    font-weight: bold;
 }
