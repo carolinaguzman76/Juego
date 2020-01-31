@@ -67,16 +67,14 @@ class Player {
 
     setListeners() {
         document.addEventListener("keydown", e => {
-           
+
 
             switch (e.keyCode) {
                 case this.keys.SHOOT.code:
                     this.keys.SHOOT.down = true
                     this.counterShoot = this.counterShoot + 1
-                    console.log("llega a switch")
-                    console.log(this.counterShoot)
-                    if(this.counterShoot % 5 == 0) {
-                        console.log("llega a if")
+
+                    if (this.counterShoot % 5 == 0) {
                         this.shootDonuts()
                     }
 
@@ -109,9 +107,9 @@ class Player {
             this.changeDirection()
         } else {
             this.posX += this.velX
-            if(this.score == 5) {
+            if (this.score == 5) {
                 this.velX += 0.5
-            } else if(this.score == 10) {
+            } else if (this.score == 10) {
                 this.velX += 0.5
             }
         }

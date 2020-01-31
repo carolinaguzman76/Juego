@@ -34,7 +34,7 @@ let game = {
         this.reset();
         this.interval = setInterval(() => {
             this.clear()
-            // this.audio.play()
+            this.audio.play()
             this.framesCounter++
             if (this.framesCounter > 5000) this.framesCounter = 0
             
@@ -53,6 +53,8 @@ let game = {
 
             if (this.time >= this.timeOut) {
                 this.endGame("Fin del juego")
+
+                this.drawCatFinish()
 
                 this.audio.pause()
 
@@ -141,7 +143,13 @@ let game = {
         this.ctx.font = '60px sans-serif'
         this.ctx.fillStyle = 'white'
         this.ctx.fillText(text, this.width / 5, 650)
-    }
+    },
+
+    drawCatFinish() {
+        let myImage = new Image()
+        myImage.src = "./img/mazaoDonut.png"
+        this.ctx.drawImage(myImage, this.width / 2 + 400, this.height / 2 - 50, 280, 400)
+      }
 }
 
 // Etapas:
