@@ -14,7 +14,7 @@ let game = {
     },
 
     time: 0,
-    timeOut: 20,
+    timeOut: 30,
 
     init(id) {
         this.canvasDom = document.getElementById(id)
